@@ -1,5 +1,10 @@
 # GitHub
 
+Github API Client.
+
+### Installation
+    pip install githubapi
+
 > Notice 
 >
 > This repository is under development and its API is highly unstable
