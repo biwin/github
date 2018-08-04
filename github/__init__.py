@@ -47,19 +47,16 @@ class GitHub(object):
         # todo get repo path from repo url
         raise ValueError('Repository Path Invalied, it should look like biwin/github and should be a github repo')
 
-    def get(self, repository_path):
-        # github.repositories.get('biwin/angular')
-        # github.repositories.get('angular')
-        self.__handle_direct_calls()
-        if self.action == 'repositories':
-            owner, repo = self.__handle_repo_path(repository_path)
-            endpoint = self.BASE_URL + '/repos/{owner}/{repo}'.format(owner=owner, repo=repo)
-
     def repository(self, repository_path):
         owner, repo = self.__handle_repo_path(repository_path)
         self.repo = owner, repo
         self._action = 'repository'
         return self
+
+    def fetch(self):
+        self.__handle_direct_calls()
+        if self.action == 'repository':
+            endpoint = self.BASE_URL + '/repos/{owner}/{repo}'.format(owner=self.repo[0], repo=self.repo[1])
 
     def tags(self):
         self.__handle_direct_calls()
