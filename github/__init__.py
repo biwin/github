@@ -55,30 +55,29 @@ class GitHub(object):
             owner, repo = self.__handle_repo_path(repository_path)
             endpoint = self.BASE_URL + '/repos/{owner}/{repo}'.format(owner=owner, repo=repo)
 
-    def topics(self, repository_path):
+    def repository(self, repository_path):
+        owner, repo = self.__handle_repo_path(repository_path)
+        self.repo = owner, repo
+        self._action = 'repository'
+        return self
+
+    def tags(self):
         self.__handle_direct_calls()
-        if self.action == 'repositories':
-            owner, repo = self.__handle_repo_path(repository_path)
+        if self.action == 'repository':
+            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/tags'.format(owner=self.repo[0], repo=self.repo[1])
+
+    def topics(self):
+        self.__handle_direct_calls()
+        if self.action == 'repository':
             self.headers['accept'] = 'application/vnd.github.mercy-preview+json'
-            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/topics'.format(owner=owner, repo=repo)
+            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/topics'.format(owner=self.repo[0], repo=self.repo[1])
 
-    def languages(self, repository_path):
+    def languages(self):
         self.__handle_direct_calls()
-        if self.action == 'repositories':
-            owner, repo = self.__handle_repo_path(repository_path)
-            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/languages'.format(owner=owner, repo=repo)
-            print endpoint
+        if self.action == 'repository':
+            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/languages'.format(owner=self.repo[0], repo=self.repo[1])
 
-    def teams(self, repository_path):
+    def teams(self):
         self.__handle_direct_calls()
-        if self.action == 'repositories':
-            owner, repo = self.__handle_repo_path(repository_path)
-            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/teams'.format(owner=owner, repo=repo)
-            print endpoint
-
-    def tags(self, repository_path):
-        self.__handle_direct_calls()
-        if self.action == 'repositories':
-            owner, repo = self.__handle_repo_path(repository_path)
-            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/tags'.format(owner=owner, repo=repo)
-            print endpoint
+        if self.action == 'repository':
+            endpoint = self.BASE_URL + '/repos/{owner}/{repo}/teams'.format(owner=self.repo[0], repo=self.repo[1])
