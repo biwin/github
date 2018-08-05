@@ -1,5 +1,9 @@
 # GitHub
 
+[![Build Status](https://travis-ci.org/biwin/github.svg?branch=develop)](https://travis-ci.org/biwin/github)
+[![PyPI](https://img.shields.io/pypi/v/python-github.svg)](https://pypi.python.org/pypi/python-github)
+[![License](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/biwin/github/blob/develop/LICENSE)
+
 Github API Client.
 
 ### Installation
