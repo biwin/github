@@ -3,7 +3,7 @@
 Github API Client.
 
 ### Installation
-    pip install githubapi
+    pip install python-github
 
 > Notice 
 >

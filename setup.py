@@ -17,7 +17,7 @@ limitations under the License.
 from setuptools import setup, find_packages
 
 setup(
-    name='githubapi',
+    name='python-github',
     packages=find_packages(),
     version='0.1.0.dev0',
     license="Apache 2.0",
